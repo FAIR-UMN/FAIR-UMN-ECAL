@@ -1,8 +1,10 @@
+*******************
 Project Description
-==================
+*******************
 
 Introduction
-----------------------------------
+================
+
 
 The Compact Muon Solenoid (CMS) detector is a general purpose detector designed to detect particles produced in the proton-proton collisions. The proton beams are provided by the Large Hadron Collider (LHC) and the collision occur at a center-of-mass energy as high as $\sqrt{s}=14$ TeV. The CMS detector (Figure $ $) is 21.6 m in length, has a radius of 7.5 m and weighs around 14,600 T. It consists of several layers of sub-detectors modules, each module designed to perform specific measurement. The inner most layer consists of tracker- pixels and silicon strips. The next two layers are the Calorimeters- electromagnetic (ECAL) and hadronic (HCAL). These layers are embedded within a solenoid capable of generating a magnetic field of 3.8 T. The outermost layers are the Muon systems, which consists of several layers of gas detectors. The information from all the sub-detectors is used for particle identification and measurement of their physical properties. The calorimeters play a vital role in the measurement of the energies of the particles produced in the collisions such as electrons, photons and hadrons. Neutrinos produced during the collisions travel through the entire assembly without being detected. The presence of neutrinos can be characterized by missing component of the energy in transverse direction, called Missing Transverse Energy (MET). The calorimeters provide a hermatic coverage for the measurement of MET. 
 
@@ -14,7 +16,7 @@ The Compact Muon Solenoid (CMS) detector is a general purpose detector designed 
 	*An overview of the CMS detector. The figure shows the arrangement of different sub-detector components inside the assembly.*
 
 The CMS Coordinate System
-------------------------------------
+-----------------------------
 
 The point of collision is considered to be the center of the coordinate system. The Y axis points vertically upward whereas the X axis points to the center of the LHC ring and the Z axis points along the direction of the beam. For practical purposes, it is useful to use the radial coordinates R. radial distance from the beam line, :math:`\theta`, the polar angle with respect to the Z axis and $\phi$, the azimuthal angle. Particles produced in the collisions tend to be boosted along the Z direction. Hence, one can define rapidity y as:
 
@@ -47,7 +49,7 @@ Where the transverse mass mT is defined as $\sqrt{p_{T}^2+m^2}$ and $p_{T}=\sqrt
 
 
 Luminosity
-------------------
+-----------------------------
 
 Luminosity is defined as the rate of particles passing through a cross section area. In the context of the LHC, the luminosity, also known and instantaneous luminosity, is given by
 
@@ -77,6 +79,46 @@ The luminosity at the CMS is calibrated using separation scans called "van der M
 The LHC was designed to operate at a center-of-mass energy of 14 TeV energy with an instantaneous luminosity peaking at $10^{34}$ cm$^{-2}$s$^{-1}$. During the Run II era, the maximum luminosity recorded was $2.06\times10^{34}$ at 13 TeV.
 
 A LHC beam consists of around 2500 bunches of protons, each bunch containing ~O($10^11$) protons at an energy of 6.5 TeV\cite{lhc_lumi_report}. Two beam circulating in opposite directions cross at various interaction points around the LHC- one of them being at the site of the CMS detector. A CMS event corresponds to the data recorded in crossing of one bunch. A luminosity block corresponds to the a collection of temporarily consecutive events, which is roughly 22 s. A CMS Run consists of a collection of several luminosity blocks. The instantaneous luminosity peaks at one point during the LHC beam cycle and gradually decreases with an exponential trend until the cycle ends. A CMS Runs starts and ends during such LHC cycle and typically lasts for several hours. 
+
+
+Electromagnetic Calorimeter (ECAL)
+================================================
+
+The ECAL is a high granularity, high resolution scintillation crystal calorimeter designed for the measurement of energies of photons and electrons produced in the collisions. The resolution of this measurements is crucial for several physics analysis. Higgs boson decaying to two photons\cite{HGG} in the final state is the most sensitive channel for the mass measurement of Higgs boson. The width of the mass peak for this analysis is dominated by the instrumental resolution. Hence, in order to have accurate measurements of energies, it is imperative to have a detector with fine resolution and robust system for measurement of detector conditions that allows for effective calibration of the detector response.
+
+
+.. image:: images/cms_ecal_3d.png
+   :width: 400
+   :align: center
+
+.. centered::
+	*A 3D view of the CMS ECAL.*
+
+.. image:: images/cms_ecal_2d.jpeg
+   :width: 400
+   :align: center
+
+.. centered::
+	*A layout of the ECAL (quandrant view).*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

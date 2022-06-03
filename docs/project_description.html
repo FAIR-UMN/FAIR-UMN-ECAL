@@ -239,31 +239,40 @@
   <a class="reference internal nav-link" href="#introduction">
    Introduction
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-cms-coordinate-system">
+     The CMS Coordinate System
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#luminosity">
+     Luminosity
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-cms-coordinate-system">
-   The CMS Coordinate System
+  <a class="reference internal nav-link" href="#electromagnetic-calorimeter-ecal">
+   Electromagnetic Calorimeter (ECAL)
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#luminosity">
-   Luminosity
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-features">
-   Key Features
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#road-map">
-   Road Map
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-features">
+     Key Features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#road-map">
+     Road Map
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -283,9 +292,8 @@
 <p>The Compact Muon Solenoid (CMS) detector is a general purpose detector designed to detect particles produced in the proton-proton collisions. The proton beams are provided by the Large Hadron Collider (LHC) and the collision occur at a center-of-mass energy as high as $sqrt{s}=14$ TeV. The CMS detector (Figure $ $) is 21.6 m in length, has a radius of 7.5 m and weighs around 14,600 T. It consists of several layers of sub-detectors modules, each module designed to perform specific measurement. The inner most layer consists of tracker- pixels and silicon strips. The next two layers are the Calorimeters- electromagnetic (ECAL) and hadronic (HCAL). These layers are embedded within a solenoid capable of generating a magnetic field of 3.8 T. The outermost layers are the Muon systems, which consists of several layers of gas detectors. The information from all the sub-detectors is used for particle identification and measurement of their physical properties. The calorimeters play a vital role in the measurement of the energies of the particles produced in the collisions such as electrons, photons and hadrons. Neutrinos produced during the collisions travel through the entire assembly without being detected. The presence of neutrinos can be characterized by missing component of the energy in transverse direction, called Missing Transverse Energy (MET). The calorimeters provide a hermatic coverage for the measurement of MET.</p>
 <a class="reference internal image-reference" href="_images/cms_experiment.png"><img alt="_images/cms_experiment.png" class="align-center" src="_images/cms_experiment.png" style="width: 400px;" /></a>
 <p class="centered">
-<strong><em>An overview of the CMS detector. The figure shows the arrangement of different sub-detector components inside the assembly.</em></strong></p></div>
-<div class="section" id="the-cms-coordinate-system">
-<h2>The CMS Coordinate System<a class="headerlink" href="#the-cms-coordinate-system" title="Permalink to this headline">¶</a></h2>
+<strong><em>An overview of the CMS detector. The figure shows the arrangement of different sub-detector components inside the assembly.</em></strong></p><div class="section" id="the-cms-coordinate-system">
+<h3>The CMS Coordinate System<a class="headerlink" href="#the-cms-coordinate-system" title="Permalink to this headline">¶</a></h3>
 <p>The point of collision is considered to be the center of the coordinate system. The Y axis points vertically upward whereas the X axis points to the center of the LHC ring and the Z axis points along the direction of the beam. For practical purposes, it is useful to use the radial coordinates R. radial distance from the beam line, <span class="math notranslate nohighlight">\(\theta\)</span>, the polar angle with respect to the Z axis and $phi$, the azimuthal angle. Particles produced in the collisions tend to be boosted along the Z direction. Hence, one can define rapidity y as:</p>
 <div class="math notranslate nohighlight">
 \[y = \dfrac{1}{2}\ln{\bigg{(}\dfrac{E+p_{z}c}{E-p_{z}c}\bigg{)}}\]</div>
@@ -300,7 +308,7 @@
 <p class="centered">
 <strong><em>The CMS coordinate system</em></strong></p></div>
 <div class="section" id="luminosity">
-<h2>Luminosity<a class="headerlink" href="#luminosity" title="Permalink to this headline">¶</a></h2>
+<h3>Luminosity<a class="headerlink" href="#luminosity" title="Permalink to this headline">¶</a></h3>
 <p>Luminosity is defined as the rate of particles passing through a cross section area. In the context of the LHC, the luminosity, also known and instantaneous luminosity, is given by</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L} = \dfrac{N_{1}N_{2}fN_{b}}{4\pi\sigma_{x}\sigma_{y}}\]</div>
@@ -315,8 +323,16 @@
 <p>The LHC was designed to operate at a center-of-mass energy of 14 TeV energy with an instantaneous luminosity peaking at $10^{34}$ cm$^{-2}$s$^{-1}$. During the Run II era, the maximum luminosity recorded was $2.06times10^{34}$ at 13 TeV.</p>
 <p>A LHC beam consists of around 2500 bunches of protons, each bunch containing ~O($10^11$) protons at an energy of 6.5 TeVcite{lhc_lumi_report}. Two beam circulating in opposite directions cross at various interaction points around the LHC- one of them being at the site of the CMS detector. A CMS event corresponds to the data recorded in crossing of one bunch. A luminosity block corresponds to the a collection of temporarily consecutive events, which is roughly 22 s. A CMS Run consists of a collection of several luminosity blocks. The instantaneous luminosity peaks at one point during the LHC beam cycle and gradually decreases with an exponential trend until the cycle ends. A CMS Runs starts and ends during such LHC cycle and typically lasts for several hours.</p>
 </div>
-<div class="section" id="key-features">
-<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="electromagnetic-calorimeter-ecal">
+<h2>Electromagnetic Calorimeter (ECAL)<a class="headerlink" href="#electromagnetic-calorimeter-ecal" title="Permalink to this headline">¶</a></h2>
+<p>The ECAL is a high granularity, high resolution scintillation crystal calorimeter designed for the measurement of energies of photons and electrons produced in the collisions. The resolution of this measurements is crucial for several physics analysis. Higgs boson decaying to two photonscite{HGG} in the final state is the most sensitive channel for the mass measurement of Higgs boson. The width of the mass peak for this analysis is dominated by the instrumental resolution. Hence, in order to have accurate measurements of energies, it is imperative to have a detector with fine resolution and robust system for measurement of detector conditions that allows for effective calibration of the detector response.</p>
+<a class="reference internal image-reference" href="_images/cms_ecal_3d.png"><img alt="_images/cms_ecal_3d.png" class="align-center" src="_images/cms_ecal_3d.png" style="width: 400px;" /></a>
+<p class="centered">
+<strong><em>A 3D view of the CMS ECAL.</em></strong></p><a class="reference internal image-reference" href="_images/cms_ecal_2d.jpeg"><img alt="_images/cms_ecal_2d.jpeg" class="align-center" src="_images/cms_ecal_2d.jpeg" style="width: 400px;" /></a>
+<p class="centered">
+<strong><em>A layout of the ECAL (quandrant view).</em></strong></p><div class="section" id="key-features">
+<h3>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h3>
 <p>GRANSO is among the first optimization packages that can handle general nonsmooth NCVX problems with nonsmooth constraints (Curtis et al., 2017):</p>
 <div class="math notranslate nohighlight">
 \[\min_{\mathbf{x} \in \mathbb{R}^n} f(\mathbf{x}), \text{ s.t. } c_i(\mathbf{x}) \leq 0, \forall i \in \mathcal{I};\ c_i(\mathbf{x}) = 0, \forall i \in \mathcal{E}\]</div>
@@ -349,7 +365,7 @@ NCVX, licensed under the AGPL version 3, is built entirely on freely available a
 used open-source frameworks; see <a class="reference external" href="https://ncvx.org">https://ncvx.org</a> for documentation and examples</p>
 </div>
 <div class="section" id="road-map">
-<h2>Road Map<a class="headerlink" href="#road-map" title="Permalink to this headline">¶</a></h2>
+<h3>Road Map<a class="headerlink" href="#road-map" title="Permalink to this headline">¶</a></h3>
 <p>Although NCVX already has many powerful features, we plan to further improve it by adding
 several major components:</p>
 <blockquote>
@@ -362,9 +378,10 @@ several major components:</p>
 </div></blockquote>
 </div>
 <div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
 <p><em>[1] Buyun Liang, Tim Mitchell, and Ju Sun, NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning, arXiv preprint arXiv:2111.13984 (2021).</em> Available at <a class="reference external" href="https://arxiv.org/abs/2111.13984">https://arxiv.org/abs/2111.13984</a></p>
 <p><em>[2] Frank E. Curtis, Tim Mitchell, and Michael L. Overton, A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles, Optimization Methods and Software, 32(1):148-181, 2017.</em> Available at <a class="reference external" href="https://dx.doi.org/10.1080/10556788.2016.1208749">https://dx.doi.org/10.1080/10556788.2016.1208749</a></p>
+</div>
 </div>
 </div>
 

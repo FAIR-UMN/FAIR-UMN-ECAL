@@ -125,11 +125,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../machine_learning/Seq2Seq.html">
-     Seq2Seq
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../machine_learning/MAIN.html">
      Use Seq2Seq Model to Predict the Calibrations
     </a>
@@ -228,49 +223,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wolfe1">
-   wolfe1
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wolfe2">
-   wolfe2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-nondescent-maxit">
-   linesearch_nondescent_maxit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-reattempts">
-   linesearch_reattempts
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-reattempts-x0">
-   linesearch_reattempts_x0
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-c-mu">
-   linesearch_c_mu
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-c-mu-x0">
-   linesearch_c_mu_x0
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -281,68 +233,23 @@
                 
   <div class="section" id="metadata">
 <h1>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="wolfe1">
-<h2>wolfe1<a class="headerlink" href="#wolfe1" title="Permalink to this headline">¶</a></h2>
-<p>Real value in (0,0.5]. Default value: 1e-4</p>
-<p>First weak Wolfe line search parameter, ensuring sufficient
-decrease of the objective/penalty.</p>
-</div>
-<div class="section" id="wolfe2">
-<h2>wolfe2<a class="headerlink" href="#wolfe2" title="Permalink to this headline">¶</a></h2>
-<p>Real value in [wolfe1,1). Default value: 0.5</p>
-<p>Second weak Wolfe line search parameter, ensuring algebraic
-increase in projected gradient.</p>
-</div>
-<div class="section" id="linesearch-nondescent-maxit">
-<h2>linesearch_nondescent_maxit<a class="headerlink" href="#linesearch-nondescent-maxit" title="Permalink to this headline">¶</a></h2>
-<p>Non-negative integer. Default value: 0</p>
-<p>If the computed direction is not numerically a descent direction,
-the line search can still be optionally attempted to see if it gets
-“lucky”, using up to  linesearch_nondescent_maxit evaluations of
-the penalty/objective function (since there may be numerical issues
-in calculating whether it truly is a descent direction or not).</p>
-</div>
-<div class="section" id="linesearch-reattempts">
-<h2>linesearch_reattempts<a class="headerlink" href="#linesearch-reattempts" title="Permalink to this headline">¶</a></h2>
-<p>Positive integer. Default value: 10</p>
-<p>If the line search fails to bracket a minimizer, this may be an
-indication that the objective function is unbounded below.  For
-constrained problems, it may be that the objective is only unbouded
-below off the feasible set, in which case lower values of
-the penalty parameter mu may be necessary for NCVX to find the
-feasible region.  For constrained problems, if the line search
-fails to bracket a minimizer, NCVX will reattempt the line search
-with progressively lower values of mu, up to linesearch_reattempts
-times.  See opts.linesearch_c_mu, opts.linesearch_reattempts_x0,
-and opts.linesearch_c_mu_x0.
-NOTE: this option is irrelevant for unconstrained problems.</p>
-</div>
-<div class="section" id="linesearch-reattempts-x0">
-<h2>linesearch_reattempts_x0<a class="headerlink" href="#linesearch-reattempts-x0" title="Permalink to this headline">¶</a></h2>
-<p>Positive integer. Default value: 30</p>
-<p>The same as linesearch_reattempts but applies only to the first
-iteration, where it may beneficial to be more aggressive in
-lowering the penalty parameter for line search reattempts.
-NOTE: this option is irrelevant for unconstrained problems.</p>
-</div>
-<div class="section" id="linesearch-c-mu">
-<h2>linesearch_c_mu<a class="headerlink" href="#linesearch-c-mu" title="Permalink to this headline">¶</a></h2>
-<p>Real value in (0,1). Default value: 0.5</p>
-<p>If the line search fails to bracket a minimizer for a constrained
-problem, and linesearch_reattempts &gt; 0, each line search reattempt
-will try a progressively smaller penalty parameter, shrinking it by
-another factor of linesearch_c_mu on each reattempt.  See
-opts.linesearch_reattempts, opts.linesearch_reattempts_x0, and
-opts.linesearch_c_mu_x0.
-NOTE: this option is irrelevant for unconstrained problems.</p>
-</div>
-<div class="section" id="linesearch-c-mu-x0">
-<h2>linesearch_c_mu_x0<a class="headerlink" href="#linesearch-c-mu-x0" title="Permalink to this headline">¶</a></h2>
-<p>Real value in (0,1). Default value: 0.5</p>
-<p>The same as linesearch_c_mu but applies only to the first
-iteration, where it may beneficial to be more aggressive in
-lowering the penalty parameter for line search reattempts.
-NOTE: this option is irrelevant for unconstrained problems.</p>
+<p>Check this <a class="reference external" href="https://github.com/FAIR-UMN/fair_ecal_monitoring/blob/master/metadata.json">GitHub Repository</a> for our Metadata.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;xtal_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Crystal Identification number within ECAL ranging from [0, 75848]&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;start_ts&quot;</span><span class="p">:</span> <span class="s2">&quot;Start of interval of validity (IOV)&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;stop_ts&quot;</span><span class="p">:</span> <span class="s2">&quot;End of IOV&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;laser_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;Timestamp of the measurement for a given crystal within an IOV&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;calibration&quot;</span><span class="p">:</span> <span class="s2">&quot;APD/PD ratio taken at laser_datetime&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="s2">&quot;Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser_datetime&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;int_deliv_inv_ub&quot;</span><span class="p">:</span> <span class="s2">&quot;Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse&quot;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 

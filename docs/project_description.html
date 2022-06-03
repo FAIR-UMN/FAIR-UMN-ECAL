@@ -95,12 +95,12 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="dataset/download.html">
+    <a class="reference external" href="https://github.com/FAIR-UMN/fair_ecal_monitoring/blob/master/metadata.json">
      Download
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="dataset/metadata.html">
+    <a class="reference external" href="https://github.com/FAIR-UMN/fair_ecal_monitoring/blob/master/metadata.json">
      Metadata
     </a>
    </li>
@@ -122,17 +122,17 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="machine_learning/LSTM.html">
-     LSTM
+    <a class="reference external" href="https://github.com/FAIR-UMN/FAIR-UMN-ECAL/blob/main/slides/ECAL_2022.pdf">
+     ECAL Seq2Seq Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="machine_learning/Seq2Seq.html">
-     Seq2Seq
+    <a class="reference external" href="https://github.com/FAIR-UMN/FAIR-UMN-ECAL/blob/main/slides/ECAL_2022.pdf">
+     ECAL LSTM
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="machine_learning/MAIN.html">
+    <a class="reference internal" href="machine_learning/Seq2Seq_demo.html">
      Use Seq2Seq Model to Predict the Calibrations
     </a>
    </li>
@@ -284,12 +284,12 @@
      Description of Data
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
  </li>
 </ul>
 
@@ -393,25 +393,25 @@ Three data points (p1, p2, p3) are measured and the response is interpolated to 
 <p>The data is provided for all 75848 crystals starting from 2016 through 2018. It includes the following columns.</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>textbf{xtal_id}: Crystal Identification number within ECAL ranging from [0, 75848].</p></li>
-<li><p>textbf{start_ts}: Start of interval of validity (IOV).</p></li>
-<li><p>textbf{stop_ts}: End of IOV.</p></li>
-<li><p>textbf{laser_datetime}: Timestamp of the measurement for a given crystal within an IOV.</p></li>
-<li><p>textbf{calibration}: APD/PD ratio taken at laser_datetime.</p></li>
-<li><p>textbf{time}: Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser_datetime.</p></li>
-<li><p>textbf{int_deliv_inv_ub}: Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse.</p></li>
+<li><p><strong>xtal_id</strong>: Crystal Identification number within ECAL ranging from [0, 75848].</p></li>
+<li><p><strong>start_ts</strong>: Start of interval of validity (IOV).</p></li>
+<li><p><strong>stop_ts</strong>: End of IOV.</p></li>
+<li><p><strong>laser_datetime</strong>: Timestamp of the measurement for a given crystal within an IOV.</p></li>
+<li><p><strong>calibration</strong>: APD/PD ratio taken at laser_datetime.</p></li>
+<li><p><strong>time</strong>: Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser_datetime.</p></li>
+<li><p><strong>int_deliv_inv_ub</strong>: Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse.</p></li>
 </ol>
 </div></blockquote>
 </div>
+</div>
 <div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p><em>[1] The CMS electromagnetic calorimeter project: Technical Design Report. Technical design report. CMS. Geneva: CERN, 1997. url: https://cds.cern.ch/record/349375.</em></p>
 <p><em>[2] B Patel et al. “Avalanche photodiodes for the CMS electromagnetic calorimeter”. In: CERN-CDS (1999). doi: 10.5170/CERN-1999-009.203. url: https://cds.cern.ch/record/548118.</em></p>
 <p><em>[3] P. R. Hobson. “Avalanche photodiodes and vacuum phototriodes for the electromagnetic calorimeter of the CMS experiment at the Large Hadron Collider”. In: Nucl. Instrum. Meth. A 604 (2009). Ed. by Richard Bates et al., pp. 193–195. doi: 10.1016/j.nima.2009.01.089.</em></p>
 <p><em>[4] Federico Ferri. “Monitoring the stability of the CMS electromagnetic calorimeter”. In: 293 (Apr. 2011), p. 012051. doi: 10 . 1088 / 1742 - 6596 / 293 / 1 / 012051. url: https : / / doi . org / 10 . 1088 / 1742 - 6596/293/1/012051.</em></p>
 <p><em>[5] A. M. Sirunyan et al. “Measurements of Higgs boson production cross sections and couplings in the diphoton decay channel at $$ sqrt{mathrm{s}}$$ = 13T eV ”. In: Journal of High Energy Physics 2021.7 (July 2021), p. 27. issn: 1029-8479. doi: 10.1007/JHEP07(2021)027. url: https://doi.org/10.1007/JHEP07(2021)027.</em></p>
 <p><em>[6] LHC Report. https://home.cern/news/news/accelerators/lhc-report-full-house-lhc.</em></p>
-</div>
 </div>
 </div>
 

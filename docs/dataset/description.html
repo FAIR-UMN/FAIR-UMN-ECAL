@@ -125,11 +125,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../machine_learning/Seq2Seq.html">
-     Seq2Seq
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../machine_learning/MAIN.html">
      Use Seq2Seq Model to Predict the Calibrations
     </a>
@@ -228,34 +223,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qpsolver">
-   QPsolver
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#torch-device">
-   torch_device
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#globalad">
-   globalAD
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#double-precision">
-   double_precision
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -266,31 +233,18 @@
                 
   <div class="section" id="description">
 <h1>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="qpsolver">
-<h2>QPsolver<a class="headerlink" href="#qpsolver" title="Permalink to this headline">¶</a></h2>
-<p>String in {‘osqp’}. Default value: ‘osqp’</p>
-<p>Select the QP solver used in the steering strategy and termination condition. Currently only OSQP is supported.</p>
-</div>
-<div class="section" id="torch-device">
-<h2>torch_device<a class="headerlink" href="#torch-device" title="Permalink to this headline">¶</a></h2>
-<p>torch.device(‘cpu’) OR torch.device(‘cuda’). Default value: torch.device(‘cpu’)</p>
-<p>Choose torch.device used for matrix operation in PyGRANSO.
-opts.torch_device = torch.device(‘cuda’) if one wants to use cuda device.</p>
-</div>
-<div class="section" id="globalad">
-<h2>globalAD<a class="headerlink" href="#globalad" title="Permalink to this headline">¶</a></h2>
-<p>Boolean value. Default value: True</p>
-<p>Compute all gradients of objective and constraint functions via auto-differentiation.
-In the default setting, user should provide [f,ci,ce] = combined_fn(X).
-When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X).
-Please check the docstring of pygranso.py for more details of setting combined_fn.</p>
-</div>
-<div class="section" id="double-precision">
-<h2>double_precision<a class="headerlink" href="#double-precision" title="Permalink to this headline">¶</a></h2>
-<p>Boolean value. Default value: True</p>
-<p>Set the floating number formats to be double precision for PyGRANSO solver. If double_precision = False,
-the floating number formats will be single precision.</p>
-</div>
+<p>The data is provided for all 75848 crystals starting from 2016 through 2018. It includes the following columns.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>xtal_id</strong>: Crystal Identification number within ECAL ranging from [0, 75848].</p></li>
+<li><p><strong>start_ts</strong>: Start of interval of validity (IOV).</p></li>
+<li><p><strong>stop_ts</strong>: End of IOV.</p></li>
+<li><p><strong>laser_datetime</strong>: Timestamp of the measurement for a given crystal within an IOV.</p></li>
+<li><p><strong>calibration</strong>: APD/PD ratio taken at laser_datetime.</p></li>
+<li><p><strong>time</strong>: Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser_datetime.</p></li>
+<li><p><strong>int_deliv_inv_ub</strong>: Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse.</p></li>
+</ol>
+</div></blockquote>
 </div>
 
 

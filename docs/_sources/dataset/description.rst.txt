@@ -1,37 +1,13 @@
+**************
 Description
-========================
+**************
 
-QPsolver
-------------------
+The data is provided for all 75848 crystals starting from 2016 through 2018. It includes the following columns.
 
-String in {'osqp'}. Default value: 'osqp'
-
-Select the QP solver used in the steering strategy and termination condition. Currently only OSQP is supported.
-
-torch_device
---------------------------------
-
-torch.device('cpu') OR torch.device('cuda'). Default value: torch.device('cpu')
-
-Choose torch.device used for matrix operation in PyGRANSO.
-opts.torch_device = torch.device('cuda') if one wants to use cuda device.
-
-globalAD
---------------------------------
-
-Boolean value. Default value: True
-
-Compute all gradients of objective and constraint functions via auto-differentiation.
-In the default setting, user should provide [f,ci,ce] = combined_fn(X).
-When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X). 
-Please check the docstring of pygranso.py for more details of setting combined_fn.
-
-double_precision
---------------------------------
-
-Boolean value. Default value: True
-
-Set the floating number formats to be double precision for PyGRANSO solver. If double_precision = False, 
-the floating number formats will be single precision.
-
- 
+    #.  **xtal\_id**: Crystal Identification number within ECAL ranging from [0, 75848].
+    #.  **start\_ts**: Start of interval of validity (IOV).
+    #.  **stop\_ts**: End of IOV.
+    #.  **laser\_datetime**: Timestamp of the measurement for a given crystal within an IOV.
+    #.  **calibration**: APD/PD ratio taken at laser\_datetime.
+    #.  **time**: Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser\_datetime.
+    #.  **int\_deliv\_inv\_ub**: Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse.

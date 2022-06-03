@@ -102,86 +102,106 @@ The ECAL is a high granularity, high resolution scintillation crystal calorimete
 	*A layout of the ECAL (quandrant view).*
 
 
+ECAL Geometry
+-----------------------------
+
+The ECAL\cite{ECALTDR} is a hermetic calorimeter made of 75848 lead tungstate (PbWO$_4$) scintillating crystals. It is divided into two regions- barrel (EB), covering pseudorapidity region $|\eta\le1.48|$ and endcap (EE), covering the pseudorapidity region $1.48\ge|\eta|\le3$. It also includes a pre-shower detector, in the forward region ($1.65\ge|\eta|\le2.6$), made of lead absorber and silicon strip sensors. The EB contains 61,200 crystals in total, grouped into 36 super module, each containing 1,700 crystals. Whereas EE contains 14,648 crystal arranged in 4 \textit{dees}. A group of 5x5 crystals in EE is collectively known as a super-cluster. EB consists of 23 cm long crystals with front face cross section of 2.2 cm x 2.2 cm, whereas EE uses 22 cm long crystals with front face cross sections of around 2.86 cm x 2.86 cm. The crystals have truncated pyramidal and are assembled inside the ECAL to minimize the inter-crystal gaps aligned with the trajectories of the particles emanating from the collisions. The ES has two planes of silicon strips- the first one vertically aligned and the second one is horizontal. EB employs Avalanche Photodiodes (APDs)\cite{Patel:548118} while EE uses vacuum photodiodes (VPTs)\cite{Hobson:2008zz}. The density of the crystals (8.28 f/$cm^3$) correspond to a radiation length of (X$_0$=0.89 cm).
+
+The crystals absorb the photons and electrons during the collision. The direction of the photons and electrons can be determined by measuring the energy deposits in the individual crystals. The ES identifies single photons from the neutral hadrons such as $\pi^0$ decaying into a pair of collimated photons.
 
 
+ECAL Crystals
+-----------------------------
 
+.. image:: images/ecal_crystal.jpg
+   :width: 400
+   :align: center
 
+.. centered::
+	*A photograph of an PbWO$_4$ crystal.*
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Key Features
-------------------
-GRANSO is among the first optimization packages that can handle general nonsmooth NCVX problems with nonsmooth constraints (Curtis et al., 2017):
+The energy resolution of the ECAL can be parameterized the following expression
 
 .. math::
-
-   \min_{\mathbf{x} \in \mathbb{R}^n} f(\mathbf{x}), \text{ s.t. } c_i(\mathbf{x}) \leq 0, \forall i \in \mathcal{I};\ c_i(\mathbf{x}) = 0, \forall i \in \mathcal{E}
-
-Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton updating with sequential quadratic programming (BFGS-SQP), and has the following advantages:
-
-	#. Unified Treatment of NCVX problems: no need to distinguish CVX vs NCVX and smooth vs nonsmooth problems, similar to typical nonlinear programming packages; 
-
-	#. Reliable Step Size Rule: specialized methods for nonsmooth problems, such as subgradient and proximal methods, often entail tricky step-size tuning and require the expertise to recognize the structures. By contrast, GRANSO chooses step sizes adaptively via gold standard line search; 
 	
-	#. Principled Stopping Criterion: GRANSO stops its iteration by	checking a theory-grounded stationarity condition for nonsmooth problems, whereas specialized methods are usually stopped when reaching ad-hoc iteration caps.
+	\dfrac{\sigma_{E}}{E}=\dfrac{S\%}{\sqrt{E}}\oplus\dfrac{N\%}{E}\oplus C\%
 
-However, GRANSO users must derive gradients analytically2 and then provide code for
-these computations, a process which may require some expert knowledge, is often error-prone, and in machine learning, is generally impractical, e.g., for the training of large neural networks. Furthermore, as part of the MATLAB software ecosystem, GRANSO is generally
-hard for practitioners to integrate it with existing popular machine learning frameworks—
-mostly in Python and R—and users’ own existing toolchains. To overcome these issues and
-facilitate both high performance and ease of use in machine and deep learning, we introduce
-a new software package called NCVX, whose initial release contains the solver PyGRANSO, a
-PyTorch-enabled port of GRANSO with several new key features: 
 
-	#. auto-differentiation of all gradients, which is a main feature to make PyGRANSO user-friendly, 
+where the first term on the left hand side, the \textit{stochastic} term, is the contribution from the statistical fluctuations in light efficiency, second term is the contribution from the electronic noise and the last term is a constant that accounts for operational effects. The parameters S, N and C are subject to variations in different regions of the detector and with changes in luminosity. The parameters have been measured using test beam studies on ECAL. For electrons with $p_{T}$ larger than 10 GeV, the energy resolution is betten than 1\%. 
 
-	#. support for both CPU and GPU computations for improved hardware acceleration and massive parallelism,
+The radiations cause damage to the crystal leading to reduced transparency over time. The damage is recovered in the absence of the radiation, but takes about a week for the full recovery of the crystal. Hence, a transparency monitoring system is set up to correct for the crystal response from radiation damage. The radiation damage also depends on the location of the crystal within the detector. The higher $\eta$ corresponds to the forward region, which receives a larger dose of radiations as compared to the crystal with $\eta=0$, i.e. Barrel region. Hence, the forward crystals tend to have a lesser transparency than the central crystals\ref{fig:crystal_transparency_runII}(citation??).
 
-	#. support for general tensor variables including vectors and matrices, as opposed to the single vector of concatenated optimization variables that GRANSO uses, 
+.. image:: images/crystal_transparency_runII.png
+   :width: 400
+   :align: center
 
-	#. integrated support for OSQP (Stellato et al., 2020) and other QP solvers for respectively computing search directions and the stationarity measure on each iteration. OSQP generally outperforms commercial QP solvers in terms of scalability and speed. 
+.. centered::
+	*Relative response of crystal to laser light in different $\eta$ regions, corresponding to different detector regions. While the crystals in EB have a consist response above 80\% throughout Run II, the crystals in EE show a large degradation in response at the end of Run II.*
 
-All of these enhancements are
-crucial for machine learning researchers and practitioners to solve large-scale problems.
-NCVX, licensed under the AGPL version 3, is built entirely on freely available and widely
-used open-source frameworks; see https://ncvx.org for documentation and examples
 
-Road Map
-----------------------------------
+ECAL Transparency Monitoring
+-----------------------------
 
-Although NCVX already has many powerful features, we plan to further improve it by adding
-several major components:
+The transparency monitoring system\cite{fferri_2011}\ref{fig:ecal_laser_monitoring} consists of lasers set up at one end of the crystals and silicon photodiodes (PN) at the other end. The system is capable of precisely and continuously measuring the crystal response during running to determine the changes in its transparency. Two lasers are used, both manufactured by Quantronix (Nd:YLF 527DQ-S Q-switched and Ti:Sapphire), to provide sources of two different  wavelengths. 
+\par
+The offline corrections are implemented from the measurement of the channel responses. In the barrel region, we use APD/PN (Avalanche Photodiode to PN transistor) and in the endcap region we have VPT/PN ratio (Vacuum Phototubes). The response measurements are taken every 45 minutes
+Three data points (p1, p2, p3) are measured and the response is interpolated to correct the events in between the times. The measurements are taken in the 3 $\mu$s LHC gap window to avoid interference with the LHC system. The information is inserted in Online Master Database System (OMDS) so that it can be propagated to offline DB for prompt reconstruction. Each set of data is available for a specific Interval of Validity (IOV). Each IOV contains one and only one response number per crystal, for all ECAL crystals called a sequence\ref{fig:ecal_iov_measurement}. In total, each IOV contains 75848 measurements corresponding to all the ECAL crystals. The response variation between two measurements is approximated by linear extrapolation. 
 
-	#. Symmetric Rank One (SR1): SR1, another major type of quasi-Newton methods, allows less stringent step size search and tends to help escape from saddle points faster by taking advantage of negative curvature directions;
-	
-	#. Stochastic Algorithms: in machine learning, computing with large-scale datasets often involves finite sums with huge number of terms, calling for (mini-batch) stochastic algorithms for reduced per-iteration cost and better scalability; 
-	
-	#. Conic Programming (CP): semidefinite programming and second-order cone programming, special cases of CP, are abundant in machine learning, e.g., kernel machines;
-	
-	#. MiniMax Optimization (MMO): MMO is an emerging technique in modern machine learning, e.g., generative adversarial networks (GANs) and multi-agent reinforcement learning.
+.. image:: images/ecal_laser_monitoring.png
+   :width: 400
+   :align: center
+
+.. centered::
+	*A schematic depicting the ECAL Laser Monitoring System at CMS.*
+
+.. image:: images/ECAL_IOV_measurement.png
+   :width: 400
+   :align: center
+
+.. centered::
+	*Example of a measurement per crystal within as sequence.*
+
+Problem Statement
+=====================
+
+The crystal response in the detector is complex and non-linear over a period of time. There are 10,000 calibrations available for each crystal during each years during Run II. Hence, in total, there are 2 B data points available for the analysis. We want to develop an algorithm to predict the response of the ECAL crystals in a given region at a given luminosity. The problem can be divided into three sub-parts:
+
+    #.  During a running period the collisions the crystals are irradiated with a constantly. Given a history of several run during a year, what is the response of the detector during the next run? What is the accuracy of the predictions? Is it possible to accurately setup the trigger thresholds for a given run?
+
+    #.  At the end of each year, known as Year End Technical Stop (YETS), the LHC halts operation for several weeks. The transparancy of the crystal recovers during this period. Can the same models be trained also predict the recovery of the crystals during YETS?
+
+    #.  Each Run of the LHC is followed by longer stops known as Long Shutdowns, which last for roughly two years. Can these models be scaled to make predictions from Run to Run?
+
+    #.  During the High Luminosity Phase the luminosity of the LHC will increase roughly 3.5 folds. Will the crystals be able to remain functional during HL-LHC?
+
+
+Description of Data
+-----------------------
+
+The data is provided for all 75848 crystals starting from 2016 through 2018. It includes the following columns.
+
+    #.  \textbf{xtal\_id}: Crystal Identification number within ECAL ranging from [0, 75848].
+    #.  \textbf{start\_ts}: Start of interval of validity (IOV).
+    #.  \textbf{stop\_ts}: End of IOV.
+    #.  \textbf{laser\_datetime}: Timestamp of the measurement for a given crystal within an IOV.
+    #.  \textbf{calibration}: APD/PD ratio taken at laser\_datetime.
+    #.  \textbf{time}: Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser\_datetime.
+    #.  \textbf{int\_deliv\_inv\_ub}: Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse.
+
 
 
 References
 -----------------
 
-*[1] Buyun Liang, Tim Mitchell, and Ju Sun, NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning, arXiv preprint arXiv:2111.13984 (2021).* Available at https://arxiv.org/abs/2111.13984
+*[1] The CMS electromagnetic calorimeter project: Technical Design Report. Technical design report. CMS. Geneva: CERN, 1997. url: https://cds.cern.ch/record/349375.*
 
-*[2] Frank E. Curtis, Tim Mitchell, and Michael L. Overton, A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles, Optimization Methods and Software, 32(1):148-181, 2017.* Available at https://dx.doi.org/10.1080/10556788.2016.1208749
+*[2] B Patel et al. “Avalanche photodiodes for the CMS electromagnetic calorimeter”. In: CERN-CDS (1999). doi: 10.5170/CERN-1999-009.203. url: https://cds.cern.ch/record/548118.*
+
+*[3] P. R. Hobson. “Avalanche photodiodes and vacuum phototriodes for the electromagnetic calorimeter of the CMS experiment at the Large Hadron Collider”. In: Nucl. Instrum. Meth. A 604 (2009). Ed. by Richard Bates et al., pp. 193–195. doi: 10.1016/j.nima.2009.01.089.*
+
+*[4] Federico Ferri. “Monitoring the stability of the CMS electromagnetic calorimeter”. In: 293 (Apr. 2011), p. 012051. doi: 10 . 1088 / 1742 - 6596 / 293 / 1 / 012051. url: https : / / doi . org / 10 . 1088 / 1742 - 6596/293/1/012051.*
+
+*[5] A. M. Sirunyan et al. “Measurements of Higgs boson production cross sections and couplings in the diphoton decay channel at $$ \sqrt{\mathrm{s}}$$ = 13T eV ”. In: Journal of High Energy Physics 2021.7 (July 2021), p. 27. issn: 1029-8479. doi: 10.1007/JHEP07(2021)027. url: https://doi.org/10.1007/JHEP07(2021)027.*
+
+*[6] LHC Report. https://home.cern/news/news/accelerators/lhc-report-full-house-lhc.*
 

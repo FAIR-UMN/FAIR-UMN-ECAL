@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Machine Learning Solution &#8212; FAIR-UMN-ECAL</title>
+    <title>Machine Learning Solutions &#8212; FAIR-UMN-ECAL</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -36,8 +36,8 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Use Seq2Seq Model to Predict the Calibrations" href="MAIN.html" />
-    <link rel="prev" title="Data from the Detector" href="../dataset/data_from_detector.html" />
+    <link rel="next" title="LSTM" href="LSTM.html" />
+    <link rel="prev" title="Installation" href="../install.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -56,6 +56,11 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/FAIR4HEP_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">FAIR-UMN-ECAL</h1>
@@ -67,6 +72,11 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../project_description.html">
+   Project Description
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../dataset/index.html">
    Datasets
@@ -78,20 +88,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../dataset/detector_information.html">
-     Detector Information
+    <a class="reference internal" href="../dataset/description.html">
+     Description
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../dataset/data_from_detector.html">
-     Data from the Detector
+    <a class="reference internal" href="../dataset/download.html">
+     Download
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dataset/metadata.html">
+     Metadata
     </a>
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install.html">
+   Installation
+  </a>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Machine Learning Solution
+   Machine Learning Solutions
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -100,11 +120,31 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="LSTM.html">
+     LSTM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Seq2Seq.html">
+     Seq2Seq
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="MAIN.html">
      Use Seq2Seq Model to Predict the Calibrations
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citation.html">
+   Citing PyGRANSO
+  </a>
  </li>
 </ul>
 
@@ -196,11 +236,13 @@
         
               <div>
                 
-  <div class="section" id="machine-learning-solution">
-<span id="examples"></span><h1>Machine Learning Solution<a class="headerlink" href="#machine-learning-solution" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="machine-learning-solutions">
+<span id="examples"></span><h1>Machine Learning Solutions<a class="headerlink" href="#machine-learning-solutions" title="Permalink to this headline">¶</a></h1>
 <p>Several quick tutorials to help users get started with PyGRANSO.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="LSTM.html">LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Seq2Seq.html">Seq2Seq</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MAIN.html">Use Seq2Seq Model to Predict the Calibrations</a></li>
 </ul>
 </div>
@@ -217,19 +259,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../dataset/data_from_detector.html" title="previous page">
+        <a class="left-prev" href="../install.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Data from the Detector</p>
+                <p class="prevnext-title">Installation</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="MAIN.html" title="next page">
+        <a class="right-next" href="LSTM.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Use Seq2Seq Model to Predict the Calibrations</p>
+                <p class="prevnext-title">LSTM</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

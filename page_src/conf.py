@@ -55,7 +55,7 @@ html_theme = "sphinx_book_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# html_logo = "./PyGRANSO_logo_banner.png"
+html_logo = "./FAIR4HEP_logo.png"
 html_title = "FAIR-UMN-ECAL"
 
 html_theme_options = {

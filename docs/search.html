@@ -60,6 +60,11 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/FAIR4HEP_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">FAIR-UMN-ECAL</h1>
@@ -71,6 +76,11 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="project_description.html">
+   Project Description
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="dataset/index.html">
    Datasets
@@ -82,20 +92,30 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="dataset/detector_information.html">
-     Detector Information
+    <a class="reference internal" href="dataset/description.html">
+     Description
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="dataset/data_from_detector.html">
-     Data from the Detector
+    <a class="reference internal" href="dataset/download.html">
+     Download
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dataset/metadata.html">
+     Metadata
     </a>
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install.html">
+   Installation
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="machine_learning/index.html">
-   Machine Learning Solution
+   Machine Learning Solutions
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -104,11 +124,31 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="machine_learning/LSTM.html">
+     LSTM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="machine_learning/Seq2Seq.html">
+     Seq2Seq
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="machine_learning/MAIN.html">
      Use Seq2Seq Model to Predict the Calibrations
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citation.html">
+   Citing PyGRANSO
+  </a>
  </li>
 </ul>
 

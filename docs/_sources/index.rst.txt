@@ -12,8 +12,12 @@ Contents
 .. toctree::
    :maxdepth: 1
    
+   project_description
    dataset/index
+   install
    machine_learning/index
+   references
+   citation
 
 Acknowledgements
 ----------------------

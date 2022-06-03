@@ -1,4 +1,4 @@
-Citing PyGRANSO
+Citing FAIR-UMN
 ========================
 
 If you publish work that uses or refers to PyGRANSO, please cite the following two papers,

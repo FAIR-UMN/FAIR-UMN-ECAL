@@ -26,5 +26,4 @@ clean:
 	mkdir ../docs
 	mkdir ../docs/_images
 	cp .nojekyll ../docs
-	cp CNAME ../docs
 	cp *.png ../docs/_images 

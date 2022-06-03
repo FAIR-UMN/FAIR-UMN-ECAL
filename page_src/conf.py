@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'NCVX'
-copyright = '2021-2022, Buyun Liang'
-author = 'Buyun Liang'
+project = 'FAIR-UMN-ECAL'
+copyright = '2022, FAIR-UMN'
+author = 'FAIR-UMN'
 
 
 # -- General configuration ---------------------------------------------------
@@ -55,11 +55,11 @@ html_theme = "sphinx_book_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_logo = "./PyGRANSO_logo_banner.png"
-html_title = "NCVX PyGRANSO Documentation"
+# html_logo = "./PyGRANSO_logo_banner.png"
+html_title = "FAIR-UMN-ECAL"
 
 html_theme_options = {
-   "repository_url": "https://github.com/sun-umn/PyGRANSO",
+   "repository_url": "https://github.com/FAIR-UMN/FAIR-UMN-ECAL",
    "use_repository_button": True,
    "use_issues_button": True,
    # "logo_only": True,

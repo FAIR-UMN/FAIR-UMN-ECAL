@@ -21,7 +21,8 @@ class Seq2Seq_Train:
                 teacher_forcing_ratio=0.5,
                 device='cpu',
                 loss_figure_name='loss.png',
-                verbose=True):
+                verbose=True,
+                plt_show=False):
 
         self.encoder = encoder
         self.decoder = decoder
@@ -38,6 +39,7 @@ class Seq2Seq_Train:
         self.device = device
         self.loss_figure_name = loss_figure_name
         self.verbose = verbose # True: print information; False: will not print information
+        self.plt_show = plt_show # True: show plot; False: will not show plot
 
     def start_train(self):
         print('>>> Start training... (be patient: training time varies)')
@@ -150,7 +152,7 @@ class Seq2Seq_Train:
             ### we save its loss every print_step
             if epoch % self.print_step == 0:
                 plot_loss(losses, self.loss_figure_name)
-        show_loss(losses)
+        show_loss(losses,self.plt_show)
 
     def train_model_teacher_forcing(self):
         ### move to device
@@ -257,7 +259,7 @@ class Seq2Seq_Train:
             ### we save its loss every print_step
             if epoch % self.print_step == 0:
                 plot_loss(losses, self.loss_figure_name)
-        show_loss(losses)
+        show_loss(losses,self.plt_show)
 
     def train_model_mixed(self):
 
@@ -363,4 +365,4 @@ class Seq2Seq_Train:
             ### we save its loss every print_step
             if epoch % self.print_step == 0:
                 plot_loss(losses, self.loss_figure_name)
-        show_loss(losses)
+        show_loss(losses,self.plt_show)

@@ -1,1 +1,5 @@
 data/interim
+
+*__pycache__
+*ipynb_checkpoints
+*LSTM_*

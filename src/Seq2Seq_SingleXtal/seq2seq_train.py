@@ -20,7 +20,8 @@ class Seq2Seq_Train:
                 strategy = 'recursive',
                 teacher_forcing_ratio=0.5,
                 device='cpu',
-                loss_figure_name='loss.png'):
+                loss_figure_name='loss.png',
+                verbose=True):
 
         self.encoder = encoder
         self.decoder = decoder
@@ -36,6 +37,7 @@ class Seq2Seq_Train:
         self.teacher_forcing_ratio = teacher_forcing_ratio
         self.device = device
         self.loss_figure_name = loss_figure_name
+        self.verbose = verbose # True: print information; False: will not print information
 
     def start_train(self):
         print('>>> Start training... (be patient: training time varies)')
@@ -81,11 +83,15 @@ class Seq2Seq_Train:
         losses = []
 
         for epoch in range(self.n_epochs):
+            if self.verbose:
+                print("======== epoch {} out of {} epochs ========".format(epoch,self.n_epochs))
             self.encoder.train()
             self.decoder.train()
             batch_loss = []
 
             for batch in range(n_batches):
+                if self.verbose:
+                    print("batch {} out of {} batches".format(batch,n_batches))
                 # select data
                 input_batch = self.input_tensor[:, batch: batch + self.batch_size, :]
 
@@ -157,9 +163,9 @@ class Seq2Seq_Train:
         params += [x for x in self.decoder.parameters()]
 
         ### define optimizer method
-        if self.opt_alg.upper == 'ADAM':
+        if self.opt_alg.upper() == 'ADAM':
             optimizer = optim.Adam(params=params, lr=self.learning_rate)
-        if self.opt_alg.upper == 'SGD':
+        elif self.opt_alg.upper() == 'SGD':
             optimizer = optim.SGD(params=params, lr=self.learning_rate)
         else:
             assert False, 'This version only supports ADAM and SGD!'
@@ -174,11 +180,15 @@ class Seq2Seq_Train:
         losses = []
 
         for epoch in range(self.n_epochs):
+            if self.verbose:
+                print("======== epoch {} out of {} epochs ========".format(epoch,self.n_epochs))
             self.encoder.train()
             self.decoder.train()
             batch_loss = []
 
             for batch in range(n_batches):
+                if self.verbose:
+                    print("batch {} out of {} batches".format(batch,n_batches))
                 # select data
                 input_batch = self.input_tensor[:, batch: batch + self.batch_size, :]
 
@@ -261,9 +271,9 @@ class Seq2Seq_Train:
         params += [x for x in self.decoder.parameters()]
 
         ### define optimizer method
-        if self.opt_alg.upper == 'ADAM':
+        if self.opt_alg.upper() == 'ADAM':
             optimizer = optim.Adam(params=params, lr=self.learning_rate)
-        if self.opt_alg.upper == 'SGD':
+        elif self.opt_alg.upper() == 'SGD':
             optimizer = optim.SGD(params=params, lr=self.learning_rate)
         else:
             assert False, 'This version only supports ADAM and SGD!'
@@ -278,11 +288,15 @@ class Seq2Seq_Train:
         losses = []
 
         for epoch in range(self.n_epochs):
+            if self.verbose:
+                print("======== epoch {} out of {} epochs ========".format(epoch,self.n_epochs))
             self.encoder.train()
             self.decoder.train()
             batch_loss = []
 
             for batch in range(n_batches):
+                if self.verbose:
+                    print("batch {} out of {} batches".format(batch,n_batches))
                 # select data
                 input_batch = self.input_tensor[:, batch: batch + self.batch_size, :]
 

@@ -15,14 +15,15 @@ def plot_loss(loss, fig_name):
     plt.savefig(fig_name, dpi=300)
     plt.close()
 
-def show_loss(loss):
+def show_loss(loss,plt_show=False):
     plt.figure()
     plt.plot(loss)
     plt.xlabel('Epoch')
     plt.ylabel('MSE')
     plt.title('Training loss vs. Epoch')
     plt.tight_layout()
-    plt.show()
+    if plt_show:
+        plt.show()
     plt.close()
 
 if __name__ == '__main__':

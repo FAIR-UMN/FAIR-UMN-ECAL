@@ -13,7 +13,8 @@ class Seq2Seq_Prediction:
                 fig_name_mape,
                 fig_name_mse,
                 metric_file,
-                strategy):
+                strategy,
+                plt_show=True):
 
         self.encoder = encoder
         self.decoder = decoder
@@ -26,6 +27,7 @@ class Seq2Seq_Prediction:
         self.fig_name_mse = fig_name_mse
         self.metric_file = metric_file
         self.strategy = strategy
+        self.plt_show = plt_show # True: show plot; False: will not show plot
 
     def start_prediction(self):
 
@@ -41,6 +43,9 @@ class Seq2Seq_Prediction:
 
         else:
             assert False, "Please select one of them---[case1, case2]!"
+
+    def getAPE(self):
+        return [self.meanAPE,self.length]
 
     # case1: we do not use prediction as input to help next-round prediction
     def prediction_case1(self):
@@ -242,7 +247,8 @@ class Seq2Seq_Prediction:
         ax1.legend(lines, [l.get_label() for l in lines])
         plt.tight_layout()
         plt.savefig(fig_name, dpi=300)
-        plt.show()
+        if self.plt_show:
+            plt.show()
         plt.close()
 
     def MAPE_Metric(self, GT_np, Pred_np):
@@ -256,6 +262,8 @@ class Seq2Seq_Prediction:
             APES.append(ape)
         meanAPE = (sum(APES) * 100 / len(APES))
         meanAPE = np.round(meanAPE, 3)[0]
+        self.length = len(APES)
+        self.meanAPE = meanAPE
         return meanAPE
 
     def MSE_Metric(self, GT_np, Pred_np):

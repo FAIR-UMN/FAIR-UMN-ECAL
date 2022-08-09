@@ -13,7 +13,7 @@ matplotlib.rcParams.update({'font.size': 17})
 # This class is used to generate the ECAL-Dataset
 # And its input is a csv file name
 class ECAL_Dataset_Prep:
-    def __init__(self, csv_file, input_len, output_len, stride, fig_name_cali, fig_name_scaled_cali, verbose=False):
+    def __init__(self, csv_file, input_len, output_len, stride, fig_name_cali, fig_name_scaled_cali, verbose=False, plt_show=True):
         self.csv_file = csv_file
         self.il = input_len
         self.ol = output_len
@@ -21,6 +21,7 @@ class ECAL_Dataset_Prep:
         self.fig_name_cali = fig_name_cali
         self.fig_name_scaled_cali = fig_name_scaled_cali
         self.verbose = verbose # True: print information; False: will not print information
+        self.plt_show = plt_show # True: show plot; False: will not show plot
 
         # the scalers
         self.scaler_cali = StandardScaler()
@@ -137,7 +138,8 @@ class ECAL_Dataset_Prep:
         plt.title(
             'Before normalization: Mean={}; Std={}'.format(round( self.df_cali['calibration'].mean(), 3), round( self.df_cali['calibration'].std(), 3)))
         plt.savefig(self.fig_name_scaled_cali, dpi=300)
-        plt.show()
+        if self.plt_show:
+            plt.show()
         plt.close()
 
         plt.figure(figsize=(18, 6))
@@ -147,5 +149,6 @@ class ECAL_Dataset_Prep:
         plt.title('After normalization: Mean={}; Std={}'.format(round(self.df_cali['calibration_scaled'].mean(), 3),
                                            round(self.df_cali['calibration_scaled'].std(), 3)))
         plt.savefig(self.fig_name_scaled_cali, dpi=300)
-        plt.show()
+        if self.plt_show:
+            plt.show()
         plt.close()

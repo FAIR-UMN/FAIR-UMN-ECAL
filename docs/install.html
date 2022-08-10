@@ -120,18 +120,18 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference external" href="https://github.com/FAIR-UMN/FAIR-UMN-ECAL/blob/main/slides/ECAL_2022.pdf">
+    <a class="reference external" href="https://github.com/FAIR-UMN/FAIR-UMN-ECAL/blob/main/ECAL_2022.pdf">
      ECAL Seq2Seq Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference external" href="https://github.com/FAIR-UMN/FAIR-UMN-ECAL/blob/main/slides/ECAL_2022.pdf">
-     ECAL LSTM
+    <a class="reference internal" href="machine_learning/MAIN.html">
+     Use Seq2Seq Model to Predict the Calibrations (Single Xtal)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="machine_learning/Seq2Seq_demo.html">
-     Use Seq2Seq Model to Predict the Calibrations
+    <a class="reference internal" href="machine_learning/MAIN_multipleXtal.html">
+     Use Seq2Seq Model to Predict the Calibrations (Multiple Xtals)
     </a>
    </li>
   </ul>
@@ -224,8 +224,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steps">
-   Steps
+  <a class="reference internal nav-link" href="#set-up-from-the-yml-file">
+   Set up from the YML file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-from-the-source">
+   Set up from the source
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -246,55 +251,119 @@
                 
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="steps">
-<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<p>We provided two options for users to set up the execution environment:
+- we provide the envrionment YML file so that one can set up the execution environment with it directly;
+- we provide the detailed steps and commands to install each required package.</p>
+<p>Before starting, be sure to have the <a class="reference external" href="https://git-scm.com/">git</a> and <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda3</a> installed (alternatively, you can also use <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda3</a> instead of <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda3</a>, which has been tested by us and works well for our demo).</p>
+<div class="section" id="set-up-from-the-yml-file">
+<h2>Set up from the YML file<a class="headerlink" href="#set-up-from-the-yml-file" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p>Install <a class="reference external" href="https://www.python.org/">Python &gt;= 3.9</a></p></li>
-<li><p>Get the most recent <a class="reference external" href="https://github.com/sun-umn/PyGRANSO">PyGRANSO package</a> (including examples and requirements file):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sun</span><span class="o">-</span><span class="n">umn</span><span class="o">/</span><span class="n">PyGRANSO</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">PyGRANSO</span>
+<li><p>Get and clone the github repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">FAIR</span><span class="o">-</span><span class="n">UMN</span><span class="o">/</span><span class="n">FAIR</span><span class="o">-</span><span class="n">UMN</span><span class="o">-</span><span class="n">ECAL</span>
 </pre></div>
 </div>
 </li>
-<li><p>Install PyGRANSO solver from PyPI:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pygranso</span>
+<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">FAIR-UMN-ECAL</span></code> (<em>Note</em>: <code class="docutils literal notranslate"><span class="pre">XXX</span></code> here indicates the upper directory of <code class="docutils literal notranslate"><span class="pre">FAIR-UMN-ECAL</span></code>. For example, if you clone <code class="docutils literal notranslate"><span class="pre">FAIR-UMN-ECAL</span></code> under <code class="docutils literal notranslate"><span class="pre">/home/Download</span></code>, then you should replace <code class="docutils literal notranslate"><span class="pre">XXX</span></code> with <code class="docutils literal notranslate"><span class="pre">/home/Download</span></code>.):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">XXX</span><span class="o">/</span><span class="n">FAIR</span><span class="o">-</span><span class="n">UMN</span><span class="o">-</span><span class="n">ECAL</span>
 </pre></div>
 </div>
 </li>
-<li><p>Install Dependencies from PyPI:</p>
-<p>OS: <strong>Linux</strong> OR <strong>Windows</strong>; Compute Platform: <strong>CUDA</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">cu111</span><span class="o">/</span><span class="n">torch_stable</span><span class="o">.</span><span class="n">html</span>
-</pre></div>
-</div>
-<p>OS: <strong>Linux</strong>; Compute Platform: <strong>CPU</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_linux_cpu</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">torch_stable</span><span class="o">.</span><span class="n">html</span>
-</pre></div>
-</div>
-<p>OS: <strong>Mac</strong> OR <strong>Windows</strong>; Compute Platform: <strong>CPU</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_cpu</span><span class="o">.</span><span class="n">txt</span>
+<li><p>Deactivate conda base environment first you are in (otherwise, go to step 4 directly) (We use <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda3</a> ):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
 </pre></div>
 </div>
 </li>
-<li><p>(CUDA) Run test to make sure the dependency installation is correct:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">test_cuda</span><span class="o">.</span><span class="n">py</span>
+<li><p>Create a new conda environment with the YML file (choose GPU or CPU version according to your computational resources).</p>
+<blockquote>
+<div><p>GPU version run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">fair_gpu</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
-<p>(CPU) Run test to make sure the dependency installation is correct:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">test_cpu</span><span class="o">.</span><span class="n">py</span>
+<p>CPU version run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">fair_cpu</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Activate conda environment.</p>
+<p>If you choose the GPU version in Step4:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">fair_gpu</span>
+</pre></div>
+</div>
+<p>If you choose the CPU version in Step4:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">fair_cpu</span>
 </pre></div>
 </div>
 </li>
-<li><p>Check the <a class="reference internal" href="machine_learning/index.html#examples"><span class="std std-ref">Examples</span></a> section in the documentation website to get started.</p></li>
+<li><p>You are now ready to explore the codes/models! Please remember to check the <code class="docutils literal notranslate"><span class="pre">src/MAIN.ipynb</span></code> first.</p></li>
 </ol>
+</div>
+<div class="section" id="set-up-from-the-source">
+<h2>Set up from the source<a class="headerlink" href="#set-up-from-the-source" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Get and clone the github repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">FAIR</span><span class="o">-</span><span class="n">UMN</span><span class="o">/</span><span class="n">FAIR</span><span class="o">-</span><span class="n">UMN</span><span class="o">-</span><span class="n">ECAL</span>
+</pre></div>
+</div>
+</li>
+<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">FAIR-UMN-ECAL</span></code> (<em>Note</em>: <code class="docutils literal notranslate"><span class="pre">XXX</span></code> here indicates the upper directory of <code class="docutils literal notranslate"><span class="pre">FAIR-UMN-ECAL</span></code>. For example, if you clone <code class="docutils literal notranslate"><span class="pre">FAIR-UMN-ECAL</span></code> under <code class="docutils literal notranslate"><span class="pre">/home/Download</span></code>, then you should replace <code class="docutils literal notranslate"><span class="pre">XXX</span></code> with <code class="docutils literal notranslate"><span class="pre">/home/Download</span></code>.):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">XXX</span><span class="o">/</span><span class="n">FAIR</span><span class="o">-</span><span class="n">UMN</span><span class="o">-</span><span class="n">ECAL</span>
+</pre></div>
+</div>
+</li>
+<li><p>Deactivate conda base environment first you are in (otherwise, go to step 4 directly) (We use <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda3</a> ):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a new conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">fair_umn</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.6</span>
+</pre></div>
+</div>
+</li>
+<li><p>Activate conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">fair_umn</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install Pytorch (choose GPU or CPU version according to your computational resources).</p>
+<p>GPU version run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span> <span class="n">torchvision</span> <span class="n">torchaudio</span> <span class="n">cudatoolkit</span><span class="o">=</span><span class="mf">10.2</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+</pre></div>
+</div>
+<p>CPU version run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span> <span class="n">torchvision</span> <span class="n">torchaudio</span> <span class="n">cpuonly</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install scikit-learn/pandas/matplotlib/numpy/seaborn/tqdm/Jupyter notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">seaborn</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">tqdm</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+</li>
+<li><p>You are now ready to explore the codes/models! Please remember to check the <code class="docutils literal notranslate"><span class="pre">src/MAIN.ipynb</span></code> first.</p></li>
+</ol>
+<p><strong>Note</strong>:
+To install Anaconda, please follow its <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/">official guideline</a>. For example, to install Anaconda3 on Linux, check <a class="reference external" href="https://docs.anaconda.com/anaconda/install/linux/">the Linux doc</a>; to install Anaconda3 on Windows, check <a class="reference external" href="https://docs.anaconda.com/anaconda/install/windows/">the Windows doc</a>; and to install Anaconda3 on macOS, check <a class="reference external" href="https://docs.anaconda.com/anaconda/install/mac-os">the Mac doc</a>. We test our model on Ubuntu, Windows, and macOS.</p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>osqp-0.6.2</p>
-<p>Python-3.9.7</p>
-<p>numpy-1.20.3</p>
-<p>scipy-1.7.1</p>
-<p>pytorch-1.9.0</p>
-<p>Jupyter Notebook-6.4.5</p>
+<blockquote>
+<div><p>pytorch</p>
+<p>scikit-learn</p>
+<p>pandas</p>
+<p>matplotlib</p>
+<p>numpy</p>
+<p>seaborn</p>
+<p>tqdm</p>
+<p>notebook</p>
+</div></blockquote>
 </div>
 </div>
 

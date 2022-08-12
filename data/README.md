@@ -2,82 +2,40 @@
 
 ## Overview
 
-This folder contains Python code/Jupyter notebooks for data preprocessing, including:
+This folder contains ECAL datasets, named as **df_skimmed_xtal_$ID_$year.csv**. For example, “df_skimmed_xtal_30600_2016.csv” means
+the dataset for Crystal with ID 30600 and Year 2016. A screenshot is shown below. Basically, we only
+use the last two columns in this project: the delta_lumi (the luminosity difference) and the calibration.
 
-
-- **1_txt2csv.ipynb**: extract features and targets (positions) from the raw txt dataset.
-
-- **2_prepare_dataset.ipynb**: 1) obtain a held-out subset; 2) split the rest to training/validation/test set.
-
-- **3_features_analysis.ipynb**: visualize features before/after normalization.
-
-*Note*: 
-
-(1) To use these Jupyter notebooks, you should: first, place these 3 Jupyter notebooks in a folder named `data`; second, create a folder named `raw_txt` and put your raw dataset into it.
-
-(2) When use these Jupyter notebooks, the suggested order should be: *1_txt2csv.ipynb* -> *2_prepare_dataset.ipynb* -> *3_features_analysis.ipynb*.  
-
-(3) *3_features_analysis.ipynb* is mainly for the use of interests, it is not necessary to run it. However, you must run *1_txt2csv.ipynb* and *2_prepare_dataset.ipynb* correctly before moving to build neural network models.
-
-(4) Each Jupyter notebook has detailed inline comments/descriptions for its important functions/steps.
-
+![Dataset Demo](./dataset_demo.png)
 
 
 ## The Dataset 
 
-In total, we have 13 different positions (targets) in our dataset,of which the details are summarized in Table 1. For each sample, we extract 19 informative features (see our [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-CDMS/blob/main/doc/FAIR%20Document%20-%20Identifying%20Interaction%20Location%20in%20SuperCDMS%20Detectors.pdf) for details), including:
+The data is provided for all 75848 crystals starting from 2016 through 2018. It includes the following columns.
 
-- **P[B,C,D,F]start**, the time at which the pulse rises to 20% of its peak with respect to the Channel A;
+- **xtal_id**: Crystal Identification number within ECAL ranging from [0, 75848].
 
-- **P[A,B,C,D,F]rise**, the time it takes for a pulse to rise from 20% to 50% of its peak;
+- **start_ts**: Start of interval of validity (IOV).
 
-- **P[A,B,C,D,F]width**, the width (in seconds) of the pulse at 80% of the pulse height;
+- **stop_ts**: End of IOV.
 
-- **P[A,B,C,D,F]fall**, the time it takes for a pulse to fall from 40% to 20% of its peak.
+- **laser_datetime**: Timestamp of the measurement for a given crystal within an IOV.
 
+- **calibration**: APD/PD ratio taken at laser_datetime.
 
+- **time**: Time corresponding to the luminosity measurement (obtained from BRIL) closest to the laser_datetime.
 
-​															 Table 1: The positions/targets of our dataset and the corresponding sample sizes.
-
-| Position | Sample number |
-| :------: | :-----------: |
-|   0.0    |      924      |
-|  -3.969  |      500      |
-|  -9.988  |      613      |
-| -12.502  |      395      |
-| -17.992  |      357      |
-| -19.700  |      376      |
-| -21.034  |      747      |
-| -24.077  |      567      |
-| -29.500  |      634      |
-| -36.116  |      560      |
-| -39.400  |      386      |
-| -41.010  |      606      |
-| -41.900  |      486      |
-
-
-
-In order to see  how the machine learning models work on newly samples with never-seen positions, we divide the dataset into two subsets:
-
-- *Held-out subset (HOS)*: it contains data samples whose positions are -12.502, -29.5, and -41.9; so it has 1515 data samples.
-- *Model-learning subset (MLS)*: it contains the rest data samples; so it has 5636 data samples.
-
-To obtain *HOS* and *MLS*, please see the details in *2_prepare_dataset.ipynb*.
-
-
-
-*Note*: Here, as a demo example, we put those samples whose positions are {-12.502, -29.5, and -41.9} into our *HOS* as a newly test set. But you are encouraged to explore other settings (e.g., you may want to put less or more samples into *HOS*) and to do so, you only need to modify *2_prepare_dataset.ipynb*.
-
+- **int_deliv_inv_ub**: Approximate integrated luminosity delivered up to the measurement in the units of micro barn inverse.
 
 
 ## The Problems
 
-Given the dataset we have described above, the problems are:
+The crystal response in the detector is complex and non-linear over a period of time. There are 10,000 calibrations available for each crystal during each years during Run II. Hence, in total, there are 2 B data points available for the analysis. We want to develop an algorithm to predict the response of the ECAL crystals in a given region at a given luminosity. The problem can be divided into three sub-parts:
 
-- learning a neural network model with the given (features, positions/targets) pairs in *MLS*;
+    During a running period the collisions the crystals are irradiated with a constantly. Given a history of several run during a year, what is the response of the detector during the next run? What is the accuracy of the predictions? Is it possible to accurately setup the trigger thresholds for a given run?
 
-- testing the generality of the learned model on *HOS*. 
+    At the end of each year, known as Year End Technical Stop (YETS), the LHC halts operation for several weeks. The transparancy of the crystal recovers during this period. Can the same models be trained also predict the recovery of the crystals during YETS?
 
-  
+    Each Run of the LHC is followed by longer stops known as Long Shutdowns, which last for roughly two years. Can these models be scaled to make predictions from Run to Run?
 
-For more details about the problems and the neural network model we used, please check our [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-CDMS/blob/main/doc/FAIR%20Document%20-%20Identifying%20Interaction%20Location%20in%20SuperCDMS%20Detectors.pdf) and the Jupyter notebooks in [src](https://github.com/FAIR-UMN/FAIR-UMN-CDMS/tree/main/src). 
+    During the High Luminosity Phase the luminosity of the LHC will increase roughly 3.5 folds. Will the crystals be able to remain functional during HL-LHC?

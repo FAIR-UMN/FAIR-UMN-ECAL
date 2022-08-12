@@ -17,8 +17,8 @@ This repository includes the following folders and/or files. For *folders*, we p
 |
 ├── src                                   /* All you need to train the deep neural network (Seq2Seq) models.
 |   ├── ecal_dataset_prep.py              /* Script to prepare dataset for Seq2Seq training.
-|   |── MAIN.ipynb                        /* Jupyter notebook to preocess data, train the Seq2Seq model (for single xtal), and make prediction.
-|   |── MAIN_multipleXtal.ipynb           /* Jupyter notebook to preocess data, train the Seq2Seq model (for multiple xtals), and make prediction.  
+|   |── MAIN.ipynb                        /* Jupyter notebook to process data, train the Seq2Seq model (for single xtal), and make prediction.
+|   |── MAIN_multipleXtal.ipynb           /* Jupyter notebook to process data, train the Seq2Seq model (for multiple xtals), and make prediction.  
 |   ├── Processing_Results                /* Script to collect and analyze the results
 |   ├── seq2seq_model.py                  /* Script to define the Seq2Seq model     
 |   ├── seq2seq_prediction.py             /* Script to make predictions on data 

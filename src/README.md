@@ -2,40 +2,39 @@
 
 ## Overview 
 
-This folder contains Python code/Jupyter notebooks for deep neural network models which are located in `DNN_Regression`, including:
+This folder contains Python code/Jupyter notebooks for Seq2Seq models, including:
 
+- **MAIN.ipynb**: Jupyter notebook to process data, train the Seq2Seq model (for single xtal), and make prediction.
+- **MAIN_multipleXtal.ipynb**: Jupyter notebook to process data, train the Seq2Seq model (for multiple xtals), and make prediction. 
+- **ecal_dataset_prep.py**: Script to prepare dataset for Seq2Seq training.
+- **Processing_Results.py**: Script to collect and analyze the results.
+- **seq2seq_model.py**: Script to define the Seq2Seq model.     
+- **seq2seq_prediction.py**: Script to make predictions on data. 
+- **seq2seq_train.py**: Script to train the Seq2Seq model.
+- **util.py**: Script includes additional helper functions.
 
-- **model_files**: 1) *nn_model.py* defines the neural network model; 2) *util.py* includes functions such as loading dataset, loss function, and visualization.
+## The Seq2Seq Model
 
-- **train_deep_regression.ipynb**: the main Jupyter notebook in this folder. It runs and tests our DNN model. It will call the backbone functions located in *model_files*.
+We formulate the problem as a [sequence modeling problem](https://towardsdatascience.com/introduction-to-sequence-modeling-problems-665817b7e583) in which we want the Seq2Seq model to learn a function that can map the input sequence to the output sequence. The detailed design of our Seq2Seq model can be found in the [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-ECAL). Here, we merely briefly describe the important hyper-parameters we used in training the Seq2Seq models. 
 
-  
+- *input_len*: the time steps (sequence length) for input data;
+- *output_len*: the time steps (sequence length) for output data;
+- *stride*: the stide of the sequence/window (default: output_len);
+- *learning_rate*: the learning rate for our model;
+- *n_epochs*: the maximum epoch to train our model;
+- *print_step*: we print the training information per “print_step” epoch;
+- *batch_size*: the batch size to train our model;
+- *opt_alg*: the name of the optimization function (one should select one from {adam’, ‘sgd’});
+- *train_strategy*: different training strategies (one should select one from {‘recursive’, ‘teacher_forcing’, ‘mixed’});
+- *teacher_forcing_ratio*: it is a float number in the range of 0-1; it will be ignored when train_strategy=‘recursive’;
+- *hidden_size*: the number of features in the hidden state;
+- *num_layers*: the number of recurrent layers;
+- *gpu_id*: the gpu id;
+- *train_file*: the training csv file;
+- *val_file*: the validation csv file;
+- *test_file*: the test csv file;
+- *crystal_id*: the crystal’s id;
+- *verbose*:set it to be True if print information is desired; otherwise, set it to False; default (False).
 
-
-
-
-## The Deep Neural Network Model
-
-We formulate the problem as a [regression problem](https://wiki2.org/en/Regression_analysis) in which we want the DNN model to learn a function that can map the features to its corresponding positions/targets. The detailed design of our DNN model can be found in the [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-CDMS/blob/main/doc/FAIR%20Document%20-%20Identifying%20Interaction%20Location%20in%20SuperCDMS%20Detectors.pdf). In here, we merely briefly describe the important hyper-parameters we used in training the DNN models. 
-
-- *normalization_type*:  the method used to normalize the dataset; it should be selected from { 'StandardScaler', 'MinMaxScaler'}. The details for these normalization methods can be found [here](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing).
-- *layer_num*: the hidden layers for the DNN model; it can be any  positive integer number. But please keep in mind that a very large *layer_num* means a more complicated neural network which may need longer training time and at the same time may increase the risk of overfitting. Therefore, it should be properly set according to the complicity of tasks. In our demo example, it is set to be 2.
--  *input_dim*: the number of input features. In our demo example, it is set to be 19.
--  *hidden_dim*: the number of neurons in each hidden layer; a large number means a large and complicated model. It should be set properly according to the complicity of tasks as well as the *layer_num*. In our demo example, it is set to be 32.
--  *output_dim*: the number of neuron is the output layer. In our demo example, it is set to be 1.
-- *trn_batch_size*: the batch size for training set.
-- *val_batch_size* : the batch size for validation set.
-- *tst_batch_size* : the batch size for test set (HOS).
-- *gpu_id*： the ID for the GPU device. If you do not have a GPU device, then it can be set to be any number and it will be ignored and use CPU directly.
-- *learning_rate*: the learning rate to update neural network's weights (by default we set it to be 0.001).
-- *max_epoch*: the total training epochs (we set it to be 500).
-- *check_freq*: the frequency to validate the learned model (we set it to be 1).
-
-
-
-*Note*: it is very easy to modify the code to obtain deep neural network models with different complexity levels. To achieve such goal, you can simply modify the *layer_num* and *hidden_dim*. 
-
-
-
-For more details about the neural network model we used and its performance results, please check our [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-CDMS/blob/main/doc/FAIR%20Document%20-%20Identifying%20Interaction%20Location%20in%20SuperCDMS%20Detectors.pdf). 
+For more details about the neural network model we used and its performance results, please check our [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-ECAL).
 

@@ -19,7 +19,7 @@
 
 project = 'FAIR-UMN-ECAL'
 copyright = '2022, FAIR-UMN'
-author = 'FAIR-UMN'
+author = 'Buyun Liang'
 
 
 # -- General configuration ---------------------------------------------------

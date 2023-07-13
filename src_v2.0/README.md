@@ -38,14 +38,3 @@ We formulate the problem as a [sequence modeling problem](https://towardsdatasci
 
 For more details about the neural network model we used and its performance results, please check our [complementary document](https://github.com/FAIR-UMN/FAIR-UMN-ECAL).
 
-## V2.0 Update
-
-- **Data preprocessing**: remove data which has small luminosity (i.e., remove luminosity <= some threshold epsilon) so that the calibration recovery parts will be removed.
-
-- **Data visualization**: improve the data visualization code to clearly separate the data in luminosity recovery part from the entire sequence.
-
-## Future Work
-
-- Try different initialization strategy to find a better minimizer.
-
-- Conduct more experiments to determine the best iteration number, window size, and batch size for the v2.0 data (after removing calibration recovery parts).

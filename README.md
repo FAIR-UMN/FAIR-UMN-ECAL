@@ -15,7 +15,7 @@ This repository includes the following folders and/or files. For *folders*, we p
 |   ├── df_skimmed_xtal_54000_201*        /* Demo datasets for the Jupyter notebook src/MAIN.ipynb  
 |   └──  README.md 
 |
-├── src                                   /* All you need to train the deep neural network (Seq2Seq) models.
+├── src_vX.0                              /* All you need to train the deep neural network (Seq2Seq) models. (v2.0 is the latest version)
 |   ├── ecal_dataset_prep.py              /* Script to prepare dataset for Seq2Seq training.
 |   |── MAIN.ipynb                        /* Jupyter notebook to process data, train the Seq2Seq model (for single xtal), and make prediction.
 |   |── MAIN_multipleXtal.ipynb           /* Jupyter notebook to process data, train the Seq2Seq model (for multiple xtals), and make prediction.  
@@ -128,6 +128,17 @@ Before starting, be sure to have the [git](https://git-scm.com/) and [Anaconda3]
 1) To install Anaconda, please follow its [official guideline](https://docs.anaconda.com/anaconda/user-guide/getting-started/). For example, to install Anaconda3 on Linux, check [here](https://docs.anaconda.com/anaconda/install/linux/); to install Anaconda3 on Windows, check [here](https://docs.anaconda.com/anaconda/install/windows/); and to install Anaconda3 on macOS, check [here](https://docs.anaconda.com/anaconda/install/mac-os/).
 3) We test our model on Ubuntu, Windows, and macOS.
 
+## V2.0 Update
+
+- **Data preprocessing**: remove data which has small luminosity (i.e., remove luminosity <= some threshold epsilon) so that the calibration recovery parts will be removed.
+
+- **Data visualization**: improve the data visualization code to clearly separate the data in luminosity recovery part from the entire sequence.
+
+## Future Work
+
+- Try different initialization strategy to find a better minimizer.
+
+- Conduct more experiments to determine the best iteration number, window size, and batch size for the v2.0 data (after removing calibration recovery parts).
 
 ## Support or Contact
 
@@ -136,3 +147,4 @@ If you need any help, please feel free to contact us:
 - [Bhargav Joshi](https://www.linkedin.com/in/bhargav-joshi-0732152b/?originalSubdomain=in) (*joshib an_at_symbol umn a_dot_symbol edu*)
 
 
+s

@@ -1,4 +1,4 @@
-data/interim
+# data/interim
 
 *__pycache__
 *ipynb_checkpoints

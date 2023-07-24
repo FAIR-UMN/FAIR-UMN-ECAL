@@ -143,53 +143,14 @@ class ECAL_Dataset_Prep:
 
 
     def visualize_data_samples(self):
-        # plt.figure(figsize=(18, 6))
-        # plt.plot(self.df_cali.index, self.df_cali['calibration'], color='k', linewidth=2)
-        # plt.plot(self.df_lumi.index, self.df_lumi['delta_lumi'], color='y', linewidth=1)
-        # plt.xlabel('Time')
-        # plt.ylabel('Calibration')
-        # plt.title(
-        #     'Before normalization: Mean={}; Std={}'.format(round( self.df_cali['calibration'].mean(), 3), round( self.df_cali['calibration'].std(), 3)))
-        # plt.savefig(self.fig_name_cali, dpi=300)
-        # # plt.show()
-        # plt.close()
-
-
-        '''
-
-        fig_title ='Before removing 0 luminosity'
-        fig_name = self.fig_name_cali[:-4] + 'before_rm_lumi.png'
-
-        self.plot_cali_lumi(self.df[['calibration']], self.df[['delta_lumi']], self.df.index, fig_name, fig_title)
-
-
-        fig_title ='Before normalization: Mean={}; Std={}'.format(round( self.df_cali['calibration'].mean(), 3), round( self.df_cali['calibration'].std(), 3))
-
-        self.plot_cali_lumi(self.df_cali['calibration'], self.df_lumi['delta_lumi'], self.df_lumi.index, self.fig_name_cali, fig_title)
-
-
-        '''
 
         fig_title ='removing 0 luminosity comparison'
         fig_name = self.fig_name_cali[:-4] + 'comparison.png' 
         self.plot_cali_lumi_comparison([self.df[['calibration']],self.df_cali['calibration']], [self.df[['delta_lumi']],self.df_lumi['delta_lumi']], [self.df.index,self.df_lumi.index], fig_name, fig_title)
 
-
-        # plt.figure(figsize=(18, 6))
-        # plt.plot(self.df_cali.index, self.df_cali['calibration_scaled'], color='k', linewidth=2)
-        # plt.xlabel('Time')
-        # plt.ylabel('Calibration')
-        # plt.title('After normalization: Mean={}; Std={}'.format(round(self.df_cali['calibration_scaled'].mean(), 3),
-        #                                    round(self.df_cali['calibration_scaled'].std(), 3)))
-        # plt.savefig(self.fig_name_scaled_cali, dpi=300)
-        # # plt.show()
-        # plt.close()
-
         fig_title ='After normalization: Mean={}; Std={}'.format(round( self.df_cali['calibration_scaled'].mean(), 3), round( self.df_cali['calibration_scaled'].std(), 3))
 
         self.plot_cali_lumi(self.df_cali['calibration_scaled'], self.df_lumi['delta_lumi_scaled'], self.df_cali.index, self.fig_name_scaled_cali, fig_title)
-
-        # Jun 23: TODO. Bug after normalization
 
         pass
 
@@ -241,7 +202,7 @@ class ECAL_Dataset_Prep:
         # plt.legend(fontsize=28)
 
         plt.savefig(fig_name, dpi=300)
-        plt.show()
+        # plt.show()
         plt.close()
 
     def plot_cali_lumi(self, target, lumi_info, time_info, fig_name, fig_title):
@@ -280,5 +241,5 @@ class ECAL_Dataset_Prep:
         # plt.legend(fontsize=28)
 
         plt.savefig(fig_name, dpi=300)
-        plt.show()
+        # plt.show()
         plt.close()

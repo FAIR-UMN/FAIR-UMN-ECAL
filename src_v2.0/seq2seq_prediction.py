@@ -225,7 +225,7 @@ class Seq2Seq_Prediction:
         ax1.set_ylabel('Calibration', fontsize=35)
         ax1.yaxis.label.set_color('b')
         ax1.set_xlabel('Time Info', fontsize=35)
-        ax1.set_ylim(0.7, 1)
+        # ax1.set_ylim(0.7, 1)
         plt.setp(ax1.get_xticklabels(), rotation=30, horizontalalignment='right')
         for tl in ax1.get_yticklabels():
             tl.set_color('b')
@@ -251,7 +251,7 @@ class Seq2Seq_Prediction:
         # plt.legend(fontsize=28)
 
         plt.savefig(fig_name, dpi=300)
-        plt.show()
+        # plt.show()
         plt.close()
 
     def MAPE_Metric(self, GT_np, Pred_np):

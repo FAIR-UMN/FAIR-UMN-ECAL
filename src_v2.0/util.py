@@ -22,7 +22,7 @@ def show_loss(loss):
     plt.ylabel('MSE')
     plt.title('Training loss vs. Epoch')
     plt.tight_layout()
-    plt.show()
+    # plt.show()
     plt.close()
 
 if __name__ == '__main__':

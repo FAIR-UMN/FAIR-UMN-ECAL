@@ -144,11 +144,11 @@ class ECAL_Dataset_Prep:
 
     def visualize_data_samples(self):
 
-        fig_title ='removing 0 luminosity comparison'
+        fig_title = 'Before preprocessing'
         fig_name = self.fig_name_cali[:-4] + 'comparison.png' 
         self.plot_cali_lumi_comparison([self.df[['calibration']],self.df_cali['calibration']], [self.df[['delta_lumi']],self.df_lumi['delta_lumi']], [self.df.index,self.df_lumi.index], fig_name, fig_title)
 
-        fig_title ='After normalization: Mean={}; Std={}'.format(round( self.df_cali['calibration_scaled'].mean(), 3), round( self.df_cali['calibration_scaled'].std(), 3))
+        fig_title ='After preprocessing: Mean={}; Std={}'.format(round( self.df_cali['calibration_scaled'].mean(), 3), round( self.df_cali['calibration_scaled'].std(), 3))
 
         self.plot_cali_lumi(self.df_cali['calibration_scaled'], self.df_lumi['delta_lumi_scaled'], self.df_cali.index, self.fig_name_scaled_cali, fig_title)
 
